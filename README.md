@@ -41,7 +41,6 @@ _The overall design goal is a locked down platform where players see only the ca
 - _A clean, easy to understand interface_
 - _Reliable coin transfers that prevent the user from making bad or impossible decisions._
 - _A tool that my friends and I can use reliably._
-- _etc._
 
 ### Team
 
@@ -114,26 +113,26 @@ src
 
 > Use this section to go into further depth regarding your components, including breaking down the components as stateless or stateful, and considering the passing of data between those components.
 
-|       Component        |    Type    | state | props | Description                                                       |
-| :--------------------: | :--------: | :---: | :---: | :---------------------------------------------------------------- |
-|          App           | functional |   n   |   n   | _The App contains everything and wraps in neatly._                |
-|         Layout         |   class    |   y   |   n   | _The Layout contains the physical layout of everything._          |
-|         Header         |   class    |   y   |   y   | _The header will contain the navigation and logo._                |
-|         Footer         | functional |   n   |   n   | _The footer will show info about me and a link to my portfolio._  |
-|          Main          |   class    |   n   |   n   | _The Main component provides the Router logic to components._     |
-|         Login          |   class    |   y   |   y   | _The Login component allows the user to login._                   |
-|        Register        |   class    |   y   |   y   | _The Register component allows users to register._                |
-|     CampaignsList      |   class    |   y   |   y   | _The CampaignsList component displays all of the campaigns._      |
-|      CampaignShow      |   class    |   y   |   y   | _The CampaignShow component displays a single campaign._          |
-| CampaignDeleteWarning  | functional |   n   |   n   | _This component gives a popup warning within CampaignShow._       |
-|     CampaignCreate     |   class    |   y   |   y   | _The CampaignCreate component allows users to create a campaign._ |
-|      CampaignEdit      |   class    |   y   |   y   | _The CampaignEdit component allows users to edit a campaign._     |
-|         About          |   class    |   n   |   n   | _The About component is a vanity page._                           |
-|     CharactersList     |   class    |   y   |   y   | _The CharactersList component displays all of the characters._    |
-|     CharacterShow      |   class    |   y   |   y   | _The CharacterShow component displays a single haractern._        |
-| CharacterDeleteWarning | functional |   n   |   n   | _This component gives a popup warning within CharacterShow._      |
-|    CharacterCreate     |   class    |   y   |   y   | _The CharacterCreate component allows users to ._                 |
-|     CharacterEdit      |   class    |   y   |   y   | _The CharacterEdit component allows users to edit a character._   |
+|       Component        |    Type    | state | props | Description                                                         |
+| :--------------------: | :--------: | :---: | :---: | :------------------------------------------------------------------ |
+|          App           | functional |   n   |   n   | _The App contains everything and wraps in neatly._                  |
+|         Layout         |   class    |   y   |   n   | _The Layout contains the physical layout of everything._            |
+|         Header         |   class    |   y   |   y   | _The header will contain the navigation and logo._                  |
+|         Footer         | functional |   n   |   n   | _The footer will show info about me and a link to my portfolio._    |
+|          Main          |   class    |   n   |   n   | _The Main component provides the Router logic to components._       |
+|         Login          |   class    |   y   |   y   | _The Login component allows the user to login._                     |
+|        Register        |   class    |   y   |   y   | _The Register component allows users to register._                  |
+|     CampaignsList      |   class    |   y   |   y   | _The CampaignsList component displays all of the campaigns._        |
+|      CampaignShow      |   class    |   y   |   y   | _The CampaignShow component displays a single campaign._            |
+| CampaignDeleteWarning  | functional |   n   |   n   | _This component gives a popup warning within CampaignShow._         |
+|     CampaignCreate     |   class    |   y   |   y   | _The CampaignCreate component allows users to create a campaign._   |
+|      CampaignEdit      |   class    |   y   |   y   | _The CampaignEdit component allows users to edit a campaign._       |
+|         About          |   class    |   n   |   n   | _The About component is a vanity page._                             |
+|     CharactersList     |   class    |   y   |   y   | _The CharactersList component displays all of the characters._      |
+|     CharacterShow      |   class    |   y   |   y   | _The CharacterShow component displays a single character._          |
+| CharacterDeleteWarning | functional |   n   |   n   | _This component gives a popup warning within CharacterShow._        |
+|    CharacterCreate     |   class    |   y   |   y   | _The CharacterCreate component allows users to create a character._ |
+|     CharacterEdit      |   class    |   y   |   y   | _The CharacterEdit component allows users to edit a character._     |
 
 #### Component Estimates
 
@@ -173,18 +172,29 @@ database_db
 #### Data Heirarchy
 
 get user
+
 create user
 
 index campaign_list
+
 show campaign
+
 create campaign
+
 put campaign
+
 destroy campaign
 
 index player_character_list
+
 show player_character
+
 create player_character
+
 put player_character
+
+put player_character's coins (The main interface for all of this)
+
 destroy player_character
 
 <br>
@@ -200,13 +210,9 @@ destroy player_character
 
 <br> 
 
-***
-
-> This section is not necessary for your pitch!
-
 ## Post-MVP
 
-> I want to filter by friends.  I've included the table in my database as relationships
+> I want to filter by friends.  I've included the table in my database as relationships.  I have a pretty good idea of how to do this and I really want this functionality so that you can only see your friends' campaigns and characters.
 
 ***
 
