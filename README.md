@@ -61,16 +61,22 @@ _**PayPaladin** MVP is a per user group of characters who can join various user'
 #### Wireframes
 
 ![Desktop](./Images/PayPaladin%20Desktop.png)
-
 - Desktop Campaigns
 
-![Tablet](./Images/PayPaladin%20Tablet.png)
+<br>
 
+![Tablet](./Images/PayPaladin%20Tablet.png)
 - Tablet Campaigns
 
-![Mobile](./Images/PayPaladin%20Phone.png)
+<br>
 
+![Mobile](./Images/PayPaladin%20Phone.png)
 - Mobile Campaigns
+
+<br>
+
+![Character Screen](./Images/PayPaladin%20Character%20Screen.png)
+- Desktop Character Screen
 
 #### Component Hierarchy
 
@@ -216,7 +222,9 @@ destroy player_character
 
 ## Post-MVP
 
-> I want to filter by friends.  I've included the table in my database as relationships.  I have a pretty good idea of how to do this and I really want this functionality so that you can only see your friends' campaigns and characters.
+* I want to filter by friends.  I've included the table in my database as relationships.  I have a pretty good idea of how to do this and I really want this functionality so that you can only see your friends' campaigns and characters.
+
+* Password Resets
 
 ***
 
