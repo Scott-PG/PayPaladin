@@ -122,7 +122,7 @@ src
 |       Component        |    Type    | state | props | Description                                                         |
 | :--------------------: | :--------: | :---: | :---: | :------------------------------------------------------------------ |
 |          App           | functional |   n   |   n   | _The App contains everything and wraps in neatly._                  |
-|         Layout         |   class    |   y   |   n   | _The Layout contains the physical layout of everything._            |
+|         Layout         |   class    |   y   |   y   | _The Layout contains the physical layout of everything._            |
 |         Header         |   class    |   y   |   y   | _The header will contain the navigation and logo._                  |
 |         Footer         | functional |   n   |   n   | _The footer will show info about me and a link to my portfolio._    |
 |          Main          |   class    |   n   |   n   | _The Main component provides the Router logic to components._       |
