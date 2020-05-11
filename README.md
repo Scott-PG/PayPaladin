@@ -191,6 +191,10 @@ show player_character
 
 create player_character
 
+join_campaign player_character
+
+leave_campaign player_character
+
 put player_character
 
 put player_character's coins (The main interface for all of this)
