@@ -5,12 +5,12 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
-    render json: @users
+    render json: @users.as_json(only: [:id, :username]), status: :ok
   end
 
   # GET /users/1
   def show
-    render json: @user, :include => [:campaigns, :player_characters], status: :ok
+    render json: @user.as_json(only: [:id, :username], include: [:player_characters, :campaigns]), status: :ok
   end
 
   # POST /users

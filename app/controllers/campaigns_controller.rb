@@ -1,6 +1,7 @@
 class CampaignsController < ApplicationController
   before_action :set_campaign, only: [:show, :update, :destroy]
   before_action :all_campaigns, only: [:index]
+  # before_action :authorize_request, except: [:show]
 
   # GET /campaigns
   def index
