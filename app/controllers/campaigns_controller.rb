@@ -10,7 +10,7 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/1
   def show
-    render json: @campaign, include: :player_characters, status: :ok
+    render json: @campaign.as_json(:include => {:player_characters => { :only => [:name, :id]}}), status: :ok
   end
 
   # POST /campaigns

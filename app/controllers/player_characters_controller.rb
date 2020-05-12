@@ -5,7 +5,7 @@ class PlayerCharactersController < ApplicationController
   def index
     @player_characters = PlayerCharacter.all
 
-    render json: @player_characters
+    render json: @player_characters, only: [:name, :id], status: :ok
   end
 
   def show
