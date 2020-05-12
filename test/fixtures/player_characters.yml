@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  platinum: 1
+  gold: 1
+  electrum: 1
+  silver: 1
+  copper: 1
+  user: one
+  campaign: one
+
+two:
+  name: MyString
+  platinum: 1
+  gold: 1
+  electrum: 1
+  silver: 1
+  copper: 1
+  user: two
+  campaign: two
