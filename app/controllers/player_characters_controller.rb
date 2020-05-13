@@ -9,7 +9,7 @@ class PlayerCharactersController < ApplicationController
   end
 
   def show
-    render json: @player_character, status: :ok
+    render json: @player_character.as_json(:include => {:campaign => { :only => [:name, :id]}}), status: :ok
   end
 
   def create
@@ -52,54 +52,58 @@ class PlayerCharactersController < ApplicationController
     else
       @sender = @player_character
       @recipient = PlayerCharacter.find_by(id: pc_transfer_params[:recipient_id])
-      if @sender[:campaign_id] == @recipient[:campaign_id]
-        plat_xfer = (pc_transfer_params[:plat_xfer].is_a? Integer) ? pc_transfer_params[:plat_xfer] : 0
-        gold_xfer = (pc_transfer_params[:gold_xfer].is_a? Integer) ? pc_transfer_params[:gold_xfer] : 0
-        elec_xfer = (pc_transfer_params[:elec_xfer].is_a? Integer) ? pc_transfer_params[:elec_xfer] : 0
-        silv_xfer = (pc_transfer_params[:silv_xfer].is_a? Integer) ? pc_transfer_params[:silv_xfer] : 0
-        copp_xfer = (pc_transfer_params[:copp_xfer].is_a? Integer) ? pc_transfer_params[:copp_xfer] : 0
-    
-        plat_xfer = (plat_xfer >= 0) ? plat_xfer : 0
-        gold_xfer = (gold_xfer >= 0) ? gold_xfer : 0
-        elec_xfer = (elec_xfer >= 0) ? elec_xfer : 0
-        silv_xfer = (silv_xfer >= 0) ? silv_xfer : 0
-        copp_xfer = (copp_xfer >= 0) ? copp_xfer : 0
-    
-        plat_sender = @sender[:platinum]
-        gold_sender = @sender[:gold]
-        elec_sender = @sender[:electrum]
-        silv_sender = @sender[:silver]
-        copp_sender = @sender[:copper]
-    
-        plat_recipient = @recipient[:platinum]
-        gold_recipient = @recipient[:gold]
-        elec_recipient = @recipient[:electrum]
-        silv_recipient = @recipient[:silver]
-        copp_recipient = @recipient[:copper]
-    
-        if plat_xfer <= plat_sender && gold_xfer <= gold_sender && elec_xfer <= elec_sender && silv_xfer <= silv_sender && copp_xfer <= copp_sender
+      if @recipient.nil?
+        render json: @player_character, status: :bad_request
+      else
+        if @sender[:campaign_id] == @recipient[:campaign_id] && @sender[:campaign_id] != nil
+          plat_xfer = (pc_transfer_params[:plat_xfer].is_a? Integer) ? pc_transfer_params[:plat_xfer] : 0
+          gold_xfer = (pc_transfer_params[:gold_xfer].is_a? Integer) ? pc_transfer_params[:gold_xfer] : 0
+          elec_xfer = (pc_transfer_params[:elec_xfer].is_a? Integer) ? pc_transfer_params[:elec_xfer] : 0
+          silv_xfer = (pc_transfer_params[:silv_xfer].is_a? Integer) ? pc_transfer_params[:silv_xfer] : 0
+          copp_xfer = (pc_transfer_params[:copp_xfer].is_a? Integer) ? pc_transfer_params[:copp_xfer] : 0
           
-          plat_sender = plat_sender - plat_xfer
-          gold_sender = gold_sender - gold_xfer
-          elec_sender = elec_sender - elec_xfer
-          silv_sender = silv_sender - silv_xfer
-          copp_sender = copp_sender - copp_xfer
-    
-          plat_recipient = plat_recipient + plat_xfer
-          gold_recipient = gold_recipient + gold_xfer
-          elec_recipient = elec_recipient + elec_xfer
-          silv_recipient = silv_recipient + silv_xfer
-          copp_recipient = copp_recipient + copp_xfer
+          plat_xfer = (plat_xfer >= 0) ? plat_xfer : 0
+          gold_xfer = (gold_xfer >= 0) ? gold_xfer : 0
+          elec_xfer = (elec_xfer >= 0) ? elec_xfer : 0
+          silv_xfer = (silv_xfer >= 0) ? silv_xfer : 0
+          copp_xfer = (copp_xfer >= 0) ? copp_xfer : 0
           
-          @sender.update(platinum: plat_sender, gold: gold_sender, electrum: elec_sender, silver: silv_sender, copper: copp_sender)
-          @recipient.update(platinum: plat_recipient, gold: gold_recipient, electrum: elec_recipient, silver: silv_recipient, copper: copp_recipient)
+          plat_sender = @sender[:platinum]
+          gold_sender = @sender[:gold]
+          elec_sender = @sender[:electrum]
+          silv_sender = @sender[:silver]
+          copp_sender = @sender[:copper]
           
-          render json: @player_character, status: :ok
+          if plat_xfer <= plat_sender && gold_xfer <= gold_sender && elec_xfer <= elec_sender && silv_xfer <= silv_sender && copp_xfer <= copp_sender
+            plat_recipient = @recipient[:platinum]
+            gold_recipient = @recipient[:gold]
+            elec_recipient = @recipient[:electrum]
+            silv_recipient = @recipient[:silver]
+            copp_recipient = @recipient[:copper]
+          
+            
+            plat_sender = plat_sender - plat_xfer
+            gold_sender = gold_sender - gold_xfer
+            elec_sender = elec_sender - elec_xfer
+            silv_sender = silv_sender - silv_xfer
+            copp_sender = copp_sender - copp_xfer
+            
+            plat_recipient = plat_recipient + plat_xfer
+            gold_recipient = gold_recipient + gold_xfer
+            elec_recipient = elec_recipient + elec_xfer
+            silv_recipient = silv_recipient + silv_xfer
+            copp_recipient = copp_recipient + copp_xfer
+            
+            @sender.update(platinum: plat_sender, gold: gold_sender, electrum: elec_sender, silver: silv_sender, copper: copp_sender)
+            @recipient.update(platinum: plat_recipient, gold: gold_recipient, electrum: elec_recipient, silver: silv_recipient, copper: copp_recipient)
+          
+            render json: @player_character, status: :ok
+          else
+            render json: @player_character, status: :bad_request
+          end
         else
           render json: @player_character, status: :bad_request
         end
-      else
-        render json: @player_character, status: :bad_request
       end
     end
   end

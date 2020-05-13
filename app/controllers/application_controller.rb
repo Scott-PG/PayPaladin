@@ -10,7 +10,7 @@ class ApplicationController < ActionController::API
     decoded = JWT.decode(token, SECRET_KEY)[0]
     HashWithIndifferentAccess.new decoded
   end
-  
+
   def authorize_request
     header = request.headers['Authorization']
     header = header.split(' ').last if header
