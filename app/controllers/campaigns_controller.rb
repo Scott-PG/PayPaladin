@@ -5,7 +5,7 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns
   def index
-    render json: @campaigns, status: :ok
+    render json: @campaigns.as_json(:include => {:user => { :only => [:username]}}), status: :ok
   end
 
   # GET /campaigns/1
