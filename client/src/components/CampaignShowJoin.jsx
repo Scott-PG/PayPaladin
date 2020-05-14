@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getOneCampaign } from "../services/api-helper";
+import { getOneCampaign, joinCampaignPC } from "../services/api-helper";
 
 const CampaignShowJoin = ({
   id: propCampaignId,
@@ -8,6 +8,7 @@ const CampaignShowJoin = ({
   const [campaignId] = useState(propCampaignId);
   const [campaign, setCampaign] = useState(null);
   const [emptyCharacters, setEmptyCharacters] = useState([]);
+  const [characterSelect, setCharacterSelect] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,18 +25,22 @@ const CampaignShowJoin = ({
     setEmptyCharacters(emptyCharacters);
   }, [propCharacters]);
 
-  // handleDropdownChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setSelectedChar({
-  //     [name]: value,
-  //   });
-  // };
+  const handleDropdownChange = (event) => {
+    const charSwitch = event.target.value;
+    setCharacterSelect(charSwitch);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await joinCampaignPC(characterSelect, {
+      campaign_id: parseInt(campaignId),
+    });
+    window.location.reload(false);
+  };
 
   return (
     <div>
-      {campaign == null ? (
-        <h3>Plane Shifting, Please Wait.</h3>
-      ) : (
+      {campaign == null ? null : (
         <>
           <h3>{campaign.name}</h3>
           <div className="campaign-player-list">
@@ -43,14 +48,21 @@ const CampaignShowJoin = ({
               <h4 key={id}>{character.name}</h4>
             ))}
           </div>
-          <select>
-            <option key="0">Please Select an Option</option>
-            {emptyCharacters.map((character, id) => (
-              <option key={id + 1} value={character.id}>
-                {character.name}
-              </option>
-            ))}
-          </select>
+          {!Array.isArray(emptyCharacters) || !emptyCharacters.length ? null : (
+            <form className="create-form" onSubmit={handleSubmit}>
+              <select defaultValue="" onChange={handleDropdownChange}>
+                <option key="0" value="">
+                  Please Select an Option
+                </option>
+                {emptyCharacters.map((character, id) => (
+                  <option key={id + 1} value={character.id}>
+                    {character.name}
+                  </option>
+                ))}
+              </select>
+              <button>Join</button>
+            </form>
+          )}
         </>
       )}
     </div>
