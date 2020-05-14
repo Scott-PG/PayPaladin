@@ -32,8 +32,8 @@ class Header extends Component {
               )}
               {context.user && (
                 <>
-                  <Link to="/campaigns">Campaigns</Link>
-                  <Link to="/characters">Characters</Link>
+                  <Link to="/mycharacters">My Characters</Link>
+                  <Link to="/mycampaigns">My Campaigns</Link>
                 </>
               )}
             </>

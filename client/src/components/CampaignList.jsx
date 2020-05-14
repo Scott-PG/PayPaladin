@@ -1,38 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
+import { getAllCampaigns } from "../services/api-helper";
 
-export default function CampaignList(props) {
-  return (
-    <div>
-      <h3>My Campaigns</h3>
-      {props.myCampaigns.map((campaign) => (
-        <React.Fragment key={campaign.id}>
-          <p>{campaign.name}</p>
-          <button
-            onClick={() => {
-              props.history.push(`/campaigns/${campaign.id}/edit`);
-            }}
-          >
-            Edit
-          </button>
-        </React.Fragment>
-      ))}
-      <Link to="campaigns/new">
-        <button>Create</button>
-      </Link>
-      <h3>Campaigns</h3>
-      {props.campaigns.map((campaign) => (
-        <React.Fragment key={campaign.id}>
-          <p>{campaign.name}</p>
-          <button
-            onClick={() => {
-              props.history.push(`/campaigns/${campaign.id}`);
-            }}
-          >
-            View
-          </button>
-        </React.Fragment>
-      ))}
-    </div>
-  );
+export default class CampaignList extends Component {
+  state = {
+    campaigns: [],
+  };
+
+  componentDidMount() {
+    this.readAllCampaigns();
+  }
+
+  readAllCampaigns = async () => {
+    const campaigns = await getAllCampaigns();
+    this.setState({ campaigns });
+  };
+
+  render() {
+    return (
+      <div>
+        <h3>All Campaigns</h3>
+        {this.state.campaigns.map((campaign) => (
+          <React.Fragment key={campaign.id}>
+            <p>
+              {campaign.name} - {campaign.user.username}
+            </p>
+            <button
+              onClick={() => {
+                this.props.history.push(`/campaigns/${campaign.id}`);
+              }}
+            >
+              View
+            </button>
+          </React.Fragment>
+        ))}
+      </div>
+    );
+  }
 }

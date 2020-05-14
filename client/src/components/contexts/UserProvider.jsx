@@ -21,6 +21,8 @@ export default class UserProvider extends Component {
       <UserContext.Provider
         value={{
           user: this.state.currentUser,
+          myCharacters: this.state.myCharacters,
+          myCampaigns: this.state.myCampaigns,
           handleLogin: async (loginData) => {
             const currentUser = await loginUser(loginData);
             this.setState({ currentUser });
