@@ -1,59 +1,27 @@
 import React, { Component } from "react";
+import UserContext from "../contexts/UserContext";
 
 import Header from "./Header";
 import Main from "../Main";
 import Footer from "./Footer";
-import {
-  loginUser,
-  registerUser,
-  verifyUser,
-  removeToken,
-} from "../../services/api-helper";
-import { withRouter } from "react-router-dom";
 
 class Layout extends Component {
-  state = {
-    currentUser: null,
-  };
-
-  componentDidMount() {
-    this.confirmUser();
-  }
-
-  handleLogin = async (loginData) => {
-    const currentUser = await loginUser(loginData);
-    this.setState({ currentUser });
-  };
-
-  handleLogout = async () => {
-    localStorage.clear();
-    this.setState({ currentUser: null });
-    removeToken();
-    this.props.history.push("/");
-  };
-
-  handleRegister = async (registerData) => {
-    const currentUser = await registerUser(registerData);
-    this.setState({ currentUser });
-  };
-
-  confirmUser = async () => {
-    const currentUser = await verifyUser();
-    this.setState({ currentUser });
-  };
-
   render() {
     return (
       <div className="layout">
-        <Header
-          currentUser={this.state.currentUser}
-          handleLogout={this.handleLogout}
-        />
+        <UserContext.Consumer>
+          {(context) => (
+            <Header
+              confirmUser={context.confirmUser}
+              readMyCampaignsAndCharacters={
+                context.readMyCampaignsAndCharacters
+              }
+              user={context.user}
+            />
+          )}
+        </UserContext.Consumer>
         <div className="layout-children">
-          <Main
-            handleLogin={this.handleLogin}
-            handleRegister={this.handleRegister}
-          />
+          <Main />
         </div>
         <Footer />
       </div>
@@ -61,4 +29,4 @@ class Layout extends Component {
   }
 }
 
-export default withRouter(Layout);
+export default Layout;

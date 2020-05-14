@@ -128,7 +128,7 @@ class PlayerCharactersController < ApplicationController
 
   # Only allow a trusted parameter "white list" through, depending on the function.
   def player_character_creation_params
-    params.require(:player_character).permit(:name, :user_id, :campaign_id)
+    params.require(:player_character).permit(:name, :user_id)
   end
 
   def player_character_params

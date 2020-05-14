@@ -1,13 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
 import Layout from "./components/shared/Layout";
+import UserProvider from "./components/contexts/UserProvider";
 
-function App() {
-  return (
-    <div className="App">
-      <Layout />
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <UserProvider>
+          <Layout />
+        </UserProvider>
+      </div>
+    );
+  }
 }
 
 export default App;
