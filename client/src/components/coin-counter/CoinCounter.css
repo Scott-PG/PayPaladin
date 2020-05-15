@@ -1,0 +1,69 @@
+.counter-holder {
+  grid-area: c;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  align-self: center;
+  width: 50px;
+  height: 150px;
+  padding: 5px 0;
+  margin: 5px;
+  font-family: "Proxima Nova", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #22262a;
+  border-radius: 17px;
+}
+
+.ctr-text {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #00000010;
+  width: 100%;
+  height: 38px;
+}
+
+.ctr-label {
+  font-size: 11px;
+  margin: 0;
+}
+
+.Platinum {
+  background-color: #dee9f5;
+}
+
+.Gold {
+  background-color: #e6bb51;
+}
+
+.Electrum {
+  background-color: #ba9f6f;
+}
+
+.Silver {
+  background-color: #d3d3d3;
+}
+
+.Copper {
+  background-color: #d19d7a;
+}
+
+.ctr-number {
+  margin: 0;
+}
+
+.ctr-btn {
+  border-color: #00000000;
+  border: 0;
+  background-color: #00000000;
+  color: #8c3c19;
+  padding: 0;
+  width: 40px;
+  min-height: 25px;
+  font-size: 20px;
+  border-radius: 17px;
+  cursor: pointer;
+}

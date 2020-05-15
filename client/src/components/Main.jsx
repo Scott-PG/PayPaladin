@@ -9,6 +9,7 @@ import MyCampaignList from "./MyCampaignList";
 import MyCharacterList from "./MyCharacterList";
 import CampaignList from "./CampaignList";
 import CampaignShowJoin from "./CampaignShowJoin";
+import CharacterShowMoney from "./CharacterShowMoney";
 
 export default class Main extends Component {
   render() {
@@ -48,6 +49,11 @@ export default class Main extends Component {
             />
           )}
         </UserContext.Consumer>
+        <Route
+          exact
+          path="/mycharacters/:id"
+          render={(props) => <CharacterShowMoney {...props} />}
+        />
       </main>
     );
   }

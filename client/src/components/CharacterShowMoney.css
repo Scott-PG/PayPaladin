@@ -1,0 +1,32 @@
+.coin-counter-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 310px;
+  margin: 5px;
+}
+
+.coin-counters {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.coin-counter-button-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.coin-counter-button-submit,
+.coin-counter-button-revert {
+  width: 130px;
+  height: 44px;
+  margin-top: 24px;
+  font-size: 14px;
+  border-radius: 17px;
+  align-items: center;
+  justify-content: center;
+}
