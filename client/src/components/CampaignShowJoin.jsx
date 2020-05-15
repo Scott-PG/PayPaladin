@@ -8,7 +8,7 @@ const CampaignShowJoin = ({
   const [campaignId] = useState(propCampaignId);
   const [campaign, setCampaign] = useState(null);
   const [emptyCharacters, setEmptyCharacters] = useState([]);
-  const [characterSelect, setCharacterSelect] = useState(null);
+  const [characterSelect, setCharacterSelect] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,10 +32,20 @@ const CampaignShowJoin = ({
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await joinCampaignPC(characterSelect, {
-      campaign_id: parseInt(campaignId),
-    });
-    window.location.reload(false);
+    if (characterSelect === null || parseInt(characterSelect) === 0) {
+      return;
+    } else {
+      await joinCampaignPC(characterSelect, {
+        campaign_id: parseInt(campaignId),
+      });
+      let newEmptyCharacters = emptyCharacters.filter(
+        (character) => character.id !== parseInt(characterSelect)
+      );
+      setEmptyCharacters(newEmptyCharacters);
+      const resp = await getOneCampaign(campaignId);
+      setCampaign(resp);
+      setCharacterSelect(0);
+    }
   };
 
   return (
@@ -50,10 +60,8 @@ const CampaignShowJoin = ({
           </div>
           {!Array.isArray(emptyCharacters) || !emptyCharacters.length ? null : (
             <form className="create-form" onSubmit={handleSubmit}>
-              <select defaultValue="" onChange={handleDropdownChange}>
-                <option key="0" value="">
-                  Please Select an Option
-                </option>
+              <select value={characterSelect} onChange={handleDropdownChange}>
+                <option value={0}>Please Select a Character</option>
                 {emptyCharacters.map((character, id) => (
                   <option key={id + 1} value={character.id}>
                     {character.name}

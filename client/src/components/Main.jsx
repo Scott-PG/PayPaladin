@@ -7,6 +7,7 @@ import Login from "./shared/Login";
 import Register from "./shared/Register";
 import MyCampaignList from "./MyCampaignList";
 import MyCharacterList from "./MyCharacterList";
+import CampaignCreate from "./CampaignCreate";
 import CampaignList from "./CampaignList";
 import CampaignShowJoin from "./CampaignShowJoin";
 import CharacterShowMoney from "./CharacterShowMoney";
@@ -28,6 +29,21 @@ export default class Main extends Component {
           path="/mycampaigns"
           render={(props) => <MyCampaignList {...props} />}
         />
+        <UserContext.Consumer>
+          {(context) => (
+            <Route
+              exact
+              path="/mycampaigns/create"
+              render={(props) => {
+                let userId;
+                context.user !== null
+                  ? (userId = context.user.id)
+                  : (userId = null);
+                return <CampaignCreate userId={userId} {...props} />;
+              }}
+            />
+          )}
+        </UserContext.Consumer>
         <Route
           exact
           path="/campaigns"
@@ -36,7 +52,6 @@ export default class Main extends Component {
         <UserContext.Consumer>
           {(context) => (
             <Route
-              exact
               path="/campaigns/:id"
               render={(props) => {
                 const { id } = props.match.params;

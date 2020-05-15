@@ -24,7 +24,7 @@ export default function MyCharacterList(props) {
                     props.history.push(`/mycharacters/${character.id}/edit`);
                   }}
                 >
-                  Edit
+                  Settings
                 </button>
               </div>
             ))}
