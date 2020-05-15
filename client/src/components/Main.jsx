@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import UserContext from "./contexts/UserContext";
 
@@ -10,6 +10,7 @@ import MyCharacterList from "./MyCharacterList";
 import CampaignList from "./CampaignList";
 import CampaignShowJoin from "./CampaignShowJoin";
 import CharacterShowMoney from "./CharacterShowMoney";
+import CharacterCreate from "./CharacterCreate";
 
 export default class Main extends Component {
   render() {
@@ -49,11 +50,26 @@ export default class Main extends Component {
             />
           )}
         </UserContext.Consumer>
-        <Route
-          exact
-          path="/mycharacters/:id"
-          render={(props) => <CharacterShowMoney {...props} />}
-        />
+        <UserContext.Consumer>
+          {(context) => (
+            <Switch>
+              <Route
+                path="/mycharacters/create"
+                render={(props) => {
+                  let userId;
+                  context.user !== null
+                    ? (userId = context.user.id)
+                    : (userId = null);
+                  return <CharacterCreate userId={userId} {...props} />;
+                }}
+              />
+              <Route
+                path="/mycharacters/:id"
+                render={(props) => <CharacterShowMoney {...props} />}
+              />
+            </Switch>
+          )}
+        </UserContext.Consumer>
       </main>
     );
   }

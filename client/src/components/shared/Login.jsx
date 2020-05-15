@@ -24,7 +24,6 @@ export default class Login extends Component {
             onSubmit={(e) => {
               e.preventDefault();
               context.handleLogin(this.state);
-              context.confirmUser();
               this.props.history.push("/");
             }}
           >

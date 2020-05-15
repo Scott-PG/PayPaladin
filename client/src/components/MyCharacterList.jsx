@@ -29,7 +29,7 @@ export default function MyCharacterList(props) {
               </div>
             ))}
             <br />
-            <Link to="/mycharacters/new">
+            <Link to="/mycharacters/create">
               <button>Create</button>
             </Link>
           </>

@@ -40,8 +40,8 @@ export default class UserProvider extends Component {
             const currentUser = await verifyUser();
             this.setState({ currentUser });
           },
-          readMyCampaignsAndCharacters: async (id) => {
-            const resp = await getOneUser(id);
+          readMyCampaignsAndCharacters: async () => {
+            const resp = await getOneUser(this.state.currentUser.id);
             if (resp.campaigns != null) {
               let myCampaigns = resp.campaigns;
               this.setState({ myCampaigns });
