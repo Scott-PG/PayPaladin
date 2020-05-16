@@ -1,0 +1,35 @@
+.layout {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  background-image: url(../../assets/treasure.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  padding: 100px 0 40px;
+}
+
+.layout-children {
+  background-color: #fdedcf;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin: 20px auto;
+  min-width: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  box-shadow: 0px 0px 20px 5px #b17c1a;
+  border-radius: 3px;
+}
+
+@media (max-width: 650px) {
+  .layout-children {
+    min-width: unset;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: unset;
+  }
+}

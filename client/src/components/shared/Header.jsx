@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import UserContext from "../contexts/UserContext";
+import "./Header.css";
 
 class Header extends Component {
   async componentDidMount() {
@@ -11,14 +12,24 @@ class Header extends Component {
   render() {
     return (
       <header>
-        <h1>PayPaladin</h1>
+        <h1 className="logo">PayPaladin</h1>
         <UserContext.Consumer>
           {(context) => (
             <>
               {context.user ? (
-                <>
-                  <p>{context.user.username}</p>
+                <div className="navlinks">
+                  <p className="welcome-message">
+                    Welcome, {context.user.username}
+                  </p>
+                  <Link className="nav-link" to="/mycharacters">
+                    My Characters
+                  </Link>
+                  <Link className="nav-link" to="/mycampaigns">
+                    My Campaigns
+                  </Link>
+
                   <button
+                    className="nav-logout-button"
                     onClick={() => {
                       context.handleLogout();
                       this.props.history.push("/");
@@ -26,15 +37,13 @@ class Header extends Component {
                   >
                     Logout
                   </button>
-                </>
+                </div>
               ) : (
-                <Link to="/login">Login/Register</Link>
-              )}
-              {context.user && (
-                <>
-                  <Link to="/mycharacters">My Characters</Link>
-                  <Link to="/mycampaigns">My Campaigns</Link>
-                </>
+                <div className="navlinks">
+                  <Link className="nav-link" to="/login">
+                    Login/Register
+                  </Link>
+                </div>
               )}
             </>
           )}

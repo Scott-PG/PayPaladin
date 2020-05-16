@@ -12,22 +12,24 @@ export default function MyCharacterList(props) {
             {context.myCharacters.map((character) => (
               <div className="list-div" key={character.id}>
                 <p>{character.name}</p>
-                <button
-                  onClick={() => {
-                    props.history.push(`/mycharacters/${character.id}`);
-                  }}
-                >
-                  View
-                </button>
-                <button
-                  onClick={() => {
-                    props.history.push(
-                      `/mycharacters/${character.id}/settings`
-                    );
-                  }}
-                >
-                  Settings
-                </button>
+                <div className="list-div-buttons">
+                  <button
+                    onClick={() => {
+                      props.history.push(`/mycharacters/${character.id}`);
+                    }}
+                  >
+                    View
+                  </button>
+                  <button
+                    onClick={() => {
+                      props.history.push(
+                        `/mycharacters/${character.id}/settings`
+                      );
+                    }}
+                  >
+                    Settings
+                  </button>
+                </div>
               </div>
             ))}
             <br />
