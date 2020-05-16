@@ -13,6 +13,7 @@ import CampaignShowJoin from "./CampaignShowJoin";
 import CharacterShowMoney from "./CharacterShowMoney";
 import CharacterSettings from "./CharacterSettings";
 import CharacterCreate from "./CharacterCreate";
+import CampaignSettings from "./CampaignSettings";
 
 export default class Main extends Component {
   render() {
@@ -52,18 +53,36 @@ export default class Main extends Component {
         />
         <UserContext.Consumer>
           {(context) => (
-            <Route
-              path="/campaigns/:id"
-              render={(props) => {
-                const { id } = props.match.params;
-                return (
-                  <CampaignShowJoin
-                    id={parseInt(id)}
-                    characters={context.myCharacters}
-                  />
-                );
-              }}
-            />
+            <Switch>
+              <Route
+                path="/campaigns/:id/settings"
+                render={(props) => {
+                  let { id } = props.match.params;
+                  let userId;
+                  context.user !== null
+                    ? (userId = context.user.id)
+                    : (userId = null);
+                  return (
+                    <CampaignSettings
+                      campaignId={parseInt(id)}
+                      userId={userId}
+                    />
+                  );
+                }}
+              />
+              <Route
+                path="/campaigns/:id/"
+                render={(props) => {
+                  let { id } = props.match.params;
+                  return (
+                    <CampaignShowJoin
+                      campaignId={parseInt(id)}
+                      characters={context.myCharacters}
+                    />
+                  );
+                }}
+              />
+            </Switch>
           )}
         </UserContext.Consumer>
         <UserContext.Consumer>
@@ -82,7 +101,7 @@ export default class Main extends Component {
               <Route
                 path="/mycharacters/:id/settings"
                 render={(props) => {
-                  const { id } = props.match.params;
+                  let { id } = props.match.params;
                   let userId;
                   context.user !== null
                     ? (userId = context.user.id)

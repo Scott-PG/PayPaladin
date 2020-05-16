@@ -21,10 +21,10 @@ export default function MyCampaignList(props) {
                 </button>
                 <button
                   onClick={() => {
-                    props.history.push(`/campaigns/${campaign.id}/edit`);
+                    props.history.push(`/campaigns/${campaign.id}/settings`);
                   }}
                 >
-                  Edit
+                  Settings
                 </button>
               </div>
             ))}

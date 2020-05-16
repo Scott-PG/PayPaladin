@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getOneCampaign, joinCampaignPC } from "../services/api-helper";
 
 const CampaignShowJoin = ({
-  id: propCampaignId,
+  campaignId: propCampaignId,
   characters: propCharacters,
 }) => {
   const [campaignId] = useState(propCampaignId);

@@ -26,7 +26,7 @@ class CampaignsController < ApplicationController
   
   # PUT /campaigns/1
   def update
-    if @campaign.update(campaign_params)
+    if @campaign.update(name:campaign_params[:name])
       render json: @campaign, status: :accepted
     else
       render json: @campaign.errors, status: :unprocessable_entity
