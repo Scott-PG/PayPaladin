@@ -1,0 +1,36 @@
+footer {
+  height: 40px;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  background-color: #833535;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #f5e5c8;
+  font-family: "Cinzel", serif;
+  font-size: 0.95em;
+  box-shadow: 0 -3px 5px 0px #b17c1aa2;
+}
+
+.footer-1 {
+  margin-left: 50px;
+}
+
+.footer-2 {
+  margin-right: 50px;
+}
+
+@media (max-width: 715px) {
+  .footer-1,
+  .footer-2 {
+    font-size: 0.8em;
+  }
+  .footer-1 {
+    margin-left: 5px;
+  }
+
+  .footer-2 {
+    margin-right: 5px;
+  }
+}

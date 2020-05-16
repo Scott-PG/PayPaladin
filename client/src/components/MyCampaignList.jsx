@@ -12,20 +12,22 @@ export default function MyCampaignList(props) {
             {context.myCampaigns.map((campaign) => (
               <div className="list-div" key={campaign.id}>
                 <p>{campaign.name}</p>
-                <button
-                  onClick={() => {
-                    props.history.push(`/campaigns/${campaign.id}`);
-                  }}
-                >
-                  View
-                </button>
-                <button
-                  onClick={() => {
-                    props.history.push(`/campaigns/${campaign.id}/settings`);
-                  }}
-                >
-                  Settings
-                </button>
+                <div className="list-div-buttons">
+                  <button
+                    onClick={() => {
+                      props.history.push(`/campaigns/${campaign.id}`);
+                    }}
+                  >
+                    View
+                  </button>
+                  <button
+                    onClick={() => {
+                      props.history.push(`/campaigns/${campaign.id}/settings`);
+                    }}
+                  >
+                    Settings
+                  </button>
+                </div>
               </div>
             ))}
           </>

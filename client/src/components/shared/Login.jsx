@@ -20,33 +20,37 @@ export default class Login extends Component {
     return (
       <UserContext.Consumer>
         {(context) => (
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              context.handleLogin(this.state);
-              this.props.history.push("/");
-            }}
-          >
+          <div className="authentication-card">
             <h3>Login</h3>
-            <label htmlFor="username">Username:</label>
-            <input
-              id="username"
-              type="text"
-              name="username"
-              value={username}
-              onChange={this.handleChange}
-            />
-            <label htmlFor="password">Password:</label>
-            <input
-              id="password"
-              type="password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-            />
-            <Link to="/register">Register</Link>
-            <button>Submit</button>
-          </form>
+            <p>
+              New User? <Link to="/register">Register here.</Link>
+            </p>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                context.handleLogin(this.state);
+                this.props.history.push("/");
+              }}
+            >
+              <label htmlFor="username">Username:</label>
+              <input
+                id="username"
+                type="text"
+                name="username"
+                value={username}
+                onChange={this.handleChange}
+              />
+              <label htmlFor="password">Password:</label>
+              <input
+                id="password"
+                type="password"
+                name="password"
+                value={password}
+                onChange={this.handleChange}
+              />
+              <button>Submit</button>
+            </form>
+          </div>
         )}
       </UserContext.Consumer>
     );
