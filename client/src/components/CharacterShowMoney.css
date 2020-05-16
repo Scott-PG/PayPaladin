@@ -30,7 +30,7 @@
   align-items: center;
   justify-content: center;
   background-color: #dee2de;
-  box-shadow: 0 0 4px 0px #aaa;
+  box-shadow: 0 0 3px 0px rgb(116, 71, 12);
   border: 1px solid #aaaaaa50;
   transition-timing-function: ease;
   transition: 0.5s;
