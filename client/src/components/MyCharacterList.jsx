@@ -10,26 +10,28 @@ export default function MyCharacterList(props) {
           <>
             <h3>My Characters</h3>
             {context.myCharacters.map((character) => (
-              <div className="character-holder" key={character.id}>
+              <div className="list-div" key={character.id}>
                 <p>{character.name}</p>
                 <button
                   onClick={() => {
-                    props.history.push(`/characters/${character.id}`);
+                    props.history.push(`/mycharacters/${character.id}`);
                   }}
                 >
                   View
                 </button>
                 <button
                   onClick={() => {
-                    props.history.push(`/characters/${character.id}/edit`);
+                    props.history.push(
+                      `/mycharacters/${character.id}/settings`
+                    );
                   }}
                 >
-                  Edit
+                  Settings
                 </button>
               </div>
             ))}
             <br />
-            <Link to="characters/new">
+            <Link to="/mycharacters/create">
               <button>Create</button>
             </Link>
           </>

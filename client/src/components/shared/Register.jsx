@@ -24,6 +24,7 @@ export default class Register extends Component {
             onSubmit={(e) => {
               e.preventDefault();
               context.handleRegister(this.state);
+              context.confirmUser();
               this.props.history.push("/");
             }}
           >

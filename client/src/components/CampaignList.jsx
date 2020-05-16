@@ -20,7 +20,7 @@ export default class CampaignList extends Component {
       <div>
         <h3>All Campaigns</h3>
         {this.state.campaigns.map((campaign) => (
-          <React.Fragment key={campaign.id}>
+          <div className="list-div" key={campaign.id}>
             <p>
               {campaign.name} - {campaign.user.username}
             </p>
@@ -31,7 +31,7 @@ export default class CampaignList extends Component {
             >
               View
             </button>
-          </React.Fragment>
+          </div>
         ))}
       </div>
     );

@@ -1,0 +1,49 @@
+.coin-counter-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 310px;
+  margin: 5px;
+}
+
+.coin-counters {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.coin-counter-button-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.coin-counter-button-submit,
+.coin-counter-button-revert {
+  width: 130px;
+  height: 44px;
+  margin-top: 24px;
+  font-size: 14px;
+  border-radius: 17px;
+  align-items: center;
+  justify-content: center;
+  background-color: #dee2de;
+  box-shadow: 0 0 4px 0px #aaa;
+  border: 1px solid #aaaaaa50;
+  transition-timing-function: ease;
+  transition: 0.5s;
+}
+
+.coin-counter-button-submit:hover {
+  transition-timing-function: ease;
+  transition: 0.5s;
+  background-color: rgb(170, 248, 174);
+}
+
+.coin-counter-button-revert:hover {
+  transition-timing-function: ease;
+  transition: 0.5s;
+  background-color: rgb(247, 175, 157);
+}
