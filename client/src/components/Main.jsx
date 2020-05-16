@@ -11,6 +11,7 @@ import CampaignCreate from "./CampaignCreate";
 import CampaignList from "./CampaignList";
 import CampaignShowJoin from "./CampaignShowJoin";
 import CharacterShowMoney from "./CharacterShowMoney";
+import CharacterSettings from "./CharacterSettings";
 import CharacterCreate from "./CharacterCreate";
 
 export default class Main extends Component {
@@ -76,6 +77,23 @@ export default class Main extends Component {
                     ? (userId = context.user.id)
                     : (userId = null);
                   return <CharacterCreate userId={userId} {...props} />;
+                }}
+              />
+              <Route
+                path="/mycharacters/:id/settings"
+                render={(props) => {
+                  const { id } = props.match.params;
+                  let userId;
+                  context.user !== null
+                    ? (userId = context.user.id)
+                    : (userId = null);
+                  return (
+                    <CharacterSettings
+                      userId={userId}
+                      characterId={parseInt(id)}
+                      {...props}
+                    />
+                  );
                 }}
               />
               <Route

@@ -21,7 +21,9 @@ export default function MyCharacterList(props) {
                 </button>
                 <button
                   onClick={() => {
-                    props.history.push(`/mycharacters/${character.id}/edit`);
+                    props.history.push(
+                      `/mycharacters/${character.id}/settings`
+                    );
                   }}
                 >
                   Settings
