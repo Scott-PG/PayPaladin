@@ -10,7 +10,7 @@ export default function MyCampaignList(props) {
         {(context) => (
           <>
             {context.myCampaigns.map((campaign) => (
-              <React.Fragment key={campaign.id}>
+              <div className="list-div" key={campaign.id}>
                 <p>{campaign.name}</p>
                 <button
                   onClick={() => {
@@ -21,18 +21,25 @@ export default function MyCampaignList(props) {
                 </button>
                 <button
                   onClick={() => {
-                    props.history.push(`/campaigns/${campaign.id}/edit`);
+                    props.history.push(`/campaigns/${campaign.id}/settings`);
                   }}
                 >
-                  Edit
+                  Settings
                 </button>
-              </React.Fragment>
+              </div>
             ))}
           </>
         )}
       </UserContext.Consumer>
-      <Link to="mycampaigns/new">
+      <br />
+      <br />
+      <Link to="mycampaigns/create">
         <button>Create</button>
+      </Link>
+      <br />
+      <br />
+      <Link to="campaigns/">
+        <button>All Campaigns</button>
       </Link>
     </div>
   );

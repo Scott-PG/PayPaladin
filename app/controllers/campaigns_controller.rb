@@ -1,7 +1,7 @@
 class CampaignsController < ApplicationController
   before_action :set_campaign, only: [:show, :update, :destroy]
   before_action :all_campaigns, only: [:index]
-  # before_action :authorize_request, except: [:show]
+  before_action :authorize_request, except: [:show]
 
   # GET /campaigns
   def index
@@ -26,7 +26,7 @@ class CampaignsController < ApplicationController
   
   # PUT /campaigns/1
   def update
-    if @campaign.update(campaign_params)
+    if @campaign.update(name:campaign_params[:name])
       render json: @campaign, status: :accepted
     else
       render json: @campaign.errors, status: :unprocessable_entity

@@ -1,6 +1,6 @@
 class PlayerCharactersController < ApplicationController
   before_action :set_player_character, except: [:index, :create]
-  # before_action :authorize_request, except: [:show]
+  before_action :authorize_request, except: [:show]
 
   def index
     @player_characters = PlayerCharacter.all
@@ -144,6 +144,6 @@ class PlayerCharactersController < ApplicationController
   end
 
   def pc_transfer_params
-    params.permit(:recipient_id, :plat_xfer, :gold_xfer, :elec_xfer, :silv_xfer, :copp_xfer)
+    params.permit(:id, :recipient_id, :plat_xfer, :gold_xfer, :elec_xfer, :silv_xfer, :copp_xfer)
   end
 end
