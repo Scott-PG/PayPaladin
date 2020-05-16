@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
   changeNamePC,
   leaveCampaignPC,
@@ -12,8 +12,8 @@ const CharacterSettings = ({
   userId: propUserId,
   characterId: propCharacterId,
 }) => {
-  const [user_id, setUserId] = useState(parseInt(propUserId));
-  const [characterId, setChararacterId] = useState(parseInt(propCharacterId));
+  const [user_id] = useState(parseInt(propUserId));
+  const [characterId] = useState(parseInt(propCharacterId));
   const [character, setCharacter] = useState(null);
   const [name, setName] = useState("");
   const [showNameChange, setShowNameChange] = useState(false);
