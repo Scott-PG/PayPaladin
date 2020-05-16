@@ -10,7 +10,7 @@ export default function MyCharacterList(props) {
           <>
             <h3>My Characters</h3>
             {context.myCharacters.map((character) => (
-              <div className="character-holder" key={character.id}>
+              <div className="list-div" key={character.id}>
                 <p>{character.name}</p>
                 <button
                   onClick={() => {
