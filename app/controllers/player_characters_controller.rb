@@ -1,6 +1,6 @@
 class PlayerCharactersController < ApplicationController
   before_action :set_player_character, except: [:index, :create]
-  before_action :authorize_request, except: [:show]
+  before_action :authorize_request
 
   def index
     @player_characters = PlayerCharacter.all

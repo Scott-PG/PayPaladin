@@ -6,7 +6,6 @@ import "./Header.css";
 class Header extends Component {
   async componentDidMount() {
     await this.props.confirmUser();
-    await this.props.readMyCampaignsAndCharacters(this.props.user.id);
   }
 
   render() {
@@ -39,7 +38,7 @@ class Header extends Component {
                   </button>
                 </div>
               ) : (
-                <div className="navlinks">
+                <div className="login">
                   <Link className="nav-link" to="/login">
                     Login/Register
                   </Link>
