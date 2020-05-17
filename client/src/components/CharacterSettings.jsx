@@ -7,6 +7,7 @@ import {
   getOnePC,
 } from "../services/api-helper";
 import UserContext from "./contexts/UserContext";
+import "./CharacterCampaignSettings.css";
 
 const CharacterSettings = ({
   userId: propUserId,
@@ -83,58 +84,81 @@ const CharacterSettings = ({
       {character === null ? null : (
         <>
           <h3>Settings for {character.name}</h3>
+          <br />
           <p>These settings are considered dangerous.</p>
           <p>
             They are hidden until you press the corresponding "Show" button.
           </p>
           <p>They will be applied instantly. You have been warned.</p>
-          <div className="character-danger-button-div">
+          <br />
+          <div className="danger-button-div">
             {showNameChange === false ? (
-              <button onClick={toggleShowNameChangeTrue}>
+              <button
+                className="danger-button db-hidden"
+                onClick={toggleShowNameChangeTrue}
+              >
                 Show Name Change
               </button>
             ) : (
-              <button onClick={toggleAllChangeFalse}>Hide Name Change</button>
+              <button
+                className="danger-button db-live"
+                onClick={toggleAllChangeFalse}
+              >
+                Hide Name Change
+              </button>
             )}
             {showCampaignLeave === false ? (
-              <button onClick={toggleShowCampaignLeaveTrue}>
+              <button
+                className="danger-button db-hidden"
+                onClick={toggleShowCampaignLeaveTrue}
+              >
                 Show Campaign Leave
               </button>
             ) : (
-              <button onClick={toggleAllChangeFalse}>
+              <button
+                className="danger-button db-live"
+                onClick={toggleAllChangeFalse}
+              >
                 Hide Campaign Leave
               </button>
             )}
             {showDelete === false ? (
-              <button onClick={toggleShowDeleteTrue}>
+              <button
+                className="danger-button db-hidden"
+                onClick={toggleShowDeleteTrue}
+              >
                 Show Character Delete
               </button>
             ) : (
-              <button onClick={toggleAllChangeFalse}>
+              <button
+                className="danger-button db-live"
+                onClick={toggleAllChangeFalse}
+              >
                 Hide Character Delete
               </button>
             )}
           </div>
-          <div className="character-danger-settings">
+          <div className="danger-settings">
             {showNameChange === false ? null : (
-              <>
-                <h4>Edit Character Name</h4>
+              <div className="danger-name-change-div">
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
                     characterSubmit();
                   }}
                 >
-                  <label htmlFor="name">New Character Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={name}
-                    onChange={handleNameChange}
-                  />
+                  <div className="danger-name-change">
+                    <label htmlFor="name">New Character Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={name}
+                      onChange={handleNameChange}
+                    />
+                  </div>
                   <button>Submit</button>
                 </form>
-              </>
+              </div>
             )}
             {showCampaignLeave === false ? null : (
               <button onClick={leaveCampaign}>Leave Your Campaign?</button>

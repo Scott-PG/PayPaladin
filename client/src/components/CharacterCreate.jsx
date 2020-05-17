@@ -34,8 +34,10 @@ const CharacterCreate = ({ userId: propUserId }) => {
       }}
     >
       <h3>Create Character</h3>
-      <label htmlFor="name">Character Name</label>
+      <br />
+      <label htmlFor="name">Character Name: </label>
       <input type="text" name="name" value={name} onChange={handleNameChange} />
+      <br />
       <button>Submit</button>
     </form>
   );

@@ -82,49 +82,66 @@ const CampaignSettings = ({
       {campaign === null ? null : (
         <>
           <h3>Campaign Settings for {campaign.name}</h3>
+          <br />
           <p>These settings are considered dangerous.</p>
           <p>
             They are hidden until you press the corresponding "Show" button.
           </p>
           <p>They will be applied instantly. You have been warned.</p>
-          <div className="campaign-danger-button-div">
+          <br />
+          <div className="danger-button-div">
             {showNameChange === false ? (
-              <button onClick={toggleShowNameChangeTrue}>
+              <button
+                className="camp-s-button danger-button db-hidden"
+                onClick={toggleShowNameChangeTrue}
+              >
                 Show Name Change
               </button>
             ) : (
-              <button onClick={toggleAllChangeFalse}>Hide Name Change</button>
+              <button
+                className="camp-s-button danger-button db-live"
+                onClick={toggleAllChangeFalse}
+              >
+                Hide Name Change
+              </button>
             )}
             {showDelete === false ? (
-              <button onClick={toggleShowDeleteTrue}>
+              <button
+                className="camp-s-button danger-button db-hidden"
+                onClick={toggleShowDeleteTrue}
+              >
                 Show Campaign Delete
               </button>
             ) : (
-              <button onClick={toggleAllChangeFalse}>
+              <button
+                className="camp-s-button danger-button db-live"
+                onClick={toggleAllChangeFalse}
+              >
                 Hide Campaign Delete
               </button>
             )}
           </div>
-          <div className="campaign-danger-settings">
+          <div className="danger-settings">
             {showNameChange === false ? null : (
-              <>
-                <h4>Edit Campaign Name</h4>
+              <div className="danger-name-change-div">
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
                     campaignSubmit();
                   }}
                 >
-                  <label htmlFor="name">New Campaign Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={name}
-                    onChange={handleNameChange}
-                  />
+                  <div className="danger-name-change">
+                    <label htmlFor="name">New Campaign Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={name}
+                      onChange={handleNameChange}
+                    />
+                  </div>
                   <button>Submit</button>
                 </form>
-              </>
+              </div>
             )}
             {showDelete === false ? null : (
               <button onClick={deleteCampaign}>Delete Your Campaign?</button>

@@ -33,9 +33,11 @@ export default function MyCharacterList(props) {
               </div>
             ))}
             <br />
-            <Link to="/mycharacters/create">
-              <button>Create</button>
-            </Link>
+            <div className="list-div-bottom-buttons">
+              <Link to="/mycharacters/create">
+                <button>Create</button>
+              </Link>
+            </div>
           </>
         )}
       </UserContext.Consumer>

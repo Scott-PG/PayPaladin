@@ -1,0 +1,62 @@
+.danger-button {
+  height: 40px;
+  width: 105px;
+  border: 1px solid #833534;
+  border-bottom: transparent;
+  margin: 0 -1px;
+  padding: 5px;
+  border-radius: 6px 6px 0 0;
+}
+
+.db-hidden {
+  background-color: #833534;
+  color: #fdedcf;
+}
+
+.db-live {
+  color: #833534;
+  background-color: #fdedcf;
+}
+
+.camp-s-button {
+  width: 156.5px;
+}
+
+.danger-button-div {
+  margin: 10px 0 0;
+}
+
+.danger-settings {
+  border: 1px solid #833534;
+  border-top: transparent;
+  border-radius: 0 0 6px 6px;
+  width: 309px;
+  transition: 0.5s;
+  min-height: 100px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.danger-settings button {
+  background-color: #833534;
+  border: 1px solid #833534;
+  border-radius: 6px;
+  color: #fdedcf;
+  height: 35px;
+  width: 105px;
+}
+
+.danger-name-change-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 90px;
+}
+
+.danger-name-change {
+  display: flex;
+  flex-direction: row;
+  margin: 0 0 7px;
+}
