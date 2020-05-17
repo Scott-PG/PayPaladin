@@ -525,16 +525,15 @@ export default class CharacterShowMoney extends Component {
     });
   };
 
-  // ============================Copper===========================
+  // ========================Transfer Buttons========================
 
   revertTransferCoins = () => {
-    let { platinum, gold, electrum, silver, copper } = this.state;
     this.setState({
-      platTemp: platinum,
-      goldTemp: gold,
-      elecTemp: electrum,
-      silvTemp: silver,
-      coppTemp: copper,
+      plat_xfer: 0,
+      gold_xfer: 0,
+      elec_xfer: 0,
+      silv_xfer: 0,
+      copp_xfer: 0,
       recipient_id: null,
     });
   };
@@ -642,6 +641,7 @@ export default class CharacterShowMoney extends Component {
               </div>
               {this.state.campaignName === null ? null : (
                 <>
+                  <br />
                   <h4>Money Transfers</h4>
                   <h4>Campaign: {this.state.campaignName}</h4>
                   {!Array.isArray(this.state.campaignMates) ||

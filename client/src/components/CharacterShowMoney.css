@@ -13,7 +13,8 @@
   width: 100%;
 }
 
-.coin-counter-button-div {
+.coin-counter-button-div,
+.coin-transfer-button-div {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -21,7 +22,9 @@
 }
 
 .coin-counter-button-submit,
-.coin-counter-button-revert {
+.coin-counter-button-revert,
+.coin-transfer-button-submit,
+.coin-transfer-button-revert {
   width: 130px;
   height: 44px;
   margin-top: 24px;
@@ -36,13 +39,15 @@
   transition: 0.5s;
 }
 
-.coin-counter-button-submit:hover {
+.coin-counter-button-submit:hover,
+.coin-transfer-button-submit:hover {
   transition-timing-function: ease;
   transition: 0.5s;
   background-color: rgb(170, 248, 174);
 }
 
-.coin-counter-button-revert:hover {
+.coin-counter-button-revert:hover,
+.coin-transfer-button-revert:hover {
   transition-timing-function: ease;
   transition: 0.5s;
   background-color: rgb(247, 175, 157);

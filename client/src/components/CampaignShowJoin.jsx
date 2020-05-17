@@ -53,11 +53,15 @@ const CampaignShowJoin = ({
       {campaign == null ? null : (
         <>
           <h3>{campaign.name}</h3>
+          <br />
+          <h4>Members:</h4>
+          <br />
           <div className="campaign-player-list">
             {campaign.player_characters.map((character, id) => (
-              <h4 key={id}>{character.name}</h4>
+              <p key={id * 2}>{character.name}</p>
             ))}
           </div>
+          <br />
           {!Array.isArray(emptyCharacters) || !emptyCharacters.length ? null : (
             <form className="create-form" onSubmit={handleSubmit}>
               <select value={characterSelect} onChange={handleDropdownChange}>
