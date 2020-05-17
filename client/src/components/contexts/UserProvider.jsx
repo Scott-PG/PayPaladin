@@ -26,10 +26,23 @@ export default class UserProvider extends Component {
           handleLogin: async (loginData) => {
             const currentUser = await loginUser(loginData);
             this.setState({ currentUser });
+            const resp = await getOneUser(currentUser.id);
+            if (resp.campaigns != null) {
+              let myCampaigns = resp.campaigns;
+              this.setState({ myCampaigns });
+            }
+            if (resp.player_characters != null) {
+              let myCharacters = resp.player_characters;
+              this.setState({ myCharacters });
+            }
           },
           handleLogout: async () => {
             localStorage.clear();
-            this.setState({ currentUser: null });
+            this.setState({
+              currentUser: null,
+              myCharacters: [],
+              myCampaigns: [],
+            });
             removeToken();
           },
           handleRegister: async (registerData) => {
@@ -39,6 +52,17 @@ export default class UserProvider extends Component {
           confirmUser: async () => {
             const currentUser = await verifyUser();
             this.setState({ currentUser });
+            if (currentUser !== null) {
+              const resp = await getOneUser(currentUser.id);
+              if (resp.campaigns != null) {
+                let myCampaigns = resp.campaigns;
+                this.setState({ myCampaigns });
+              }
+              if (resp.player_characters != null) {
+                let myCharacters = resp.player_characters;
+                this.setState({ myCharacters });
+              }
+            }
           },
           readMyCampaignsAndCharacters: async () => {
             const resp = await getOneUser(this.state.currentUser.id);

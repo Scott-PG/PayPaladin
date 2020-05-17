@@ -11,15 +11,7 @@ class Layout extends Component {
     return (
       <div className="layout">
         <UserContext.Consumer>
-          {(context) => (
-            <Header
-              confirmUser={context.confirmUser}
-              readMyCampaignsAndCharacters={
-                context.readMyCampaignsAndCharacters
-              }
-              user={context.user}
-            />
-          )}
+          {(context) => <Header confirmUser={context.confirmUser} />}
         </UserContext.Consumer>
         <div className="layout-children">
           <Main />
