@@ -24,13 +24,15 @@ export default class CampaignList extends Component {
             <p>
               {campaign.name} - {campaign.user.username}
             </p>
-            <button
-              onClick={() => {
-                this.props.history.push(`/campaigns/${campaign.id}`);
-              }}
-            >
-              View
-            </button>
+            <div className="list-div-buttons">
+              <button
+                onClick={() => {
+                  this.props.history.push(`/campaigns/${campaign.id}`);
+                }}
+              >
+                View
+              </button>
+            </div>
           </div>
         ))}
       </div>
