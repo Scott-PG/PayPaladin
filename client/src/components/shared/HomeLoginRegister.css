@@ -1,0 +1,23 @@
+.authentication-card {
+  width: auto;
+}
+
+.auth-field label {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5px;
+}
+
+.auth-field input {
+  width: 100%;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.home-blurb {
+  max-width: 320px;
+}

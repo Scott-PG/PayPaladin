@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 
 import UserContext from "./contexts/UserContext";
 
+import Home from "./shared/Home";
 import Login from "./shared/Login";
 import Register from "./shared/Register";
 import MyCampaignList from "./MyCampaignList";
@@ -19,6 +20,7 @@ export default class Main extends Component {
   render() {
     return (
       <main>
+        <Route exact path="/" render={() => <Home />} />
         <Route path="/login" render={(props) => <Login {...props} />} />
         <Route path="/register" render={(props) => <Register {...props} />} />
         <Route
