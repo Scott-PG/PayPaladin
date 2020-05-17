@@ -33,9 +33,11 @@ const CampaignCreate = ({ userId: propUserId }) => {
         characterSubmit();
       }}
     >
-      <h3>Create Campaignr</h3>
-      <label htmlFor="name">Campaign Name</label>
+      <h3>Create Campaign</h3>
+      <br />
+      <label htmlFor="name">Campaign Name:</label>
       <input type="text" name="name" value={name} onChange={handleNameChange} />
+      <br />
       <button>Submit</button>
     </form>
   );

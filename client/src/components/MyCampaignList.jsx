@@ -35,14 +35,14 @@ export default function MyCampaignList(props) {
       </UserContext.Consumer>
       <br />
       <br />
-      <Link to="mycampaigns/create">
-        <button>Create</button>
-      </Link>
-      <br />
-      <br />
-      <Link to="campaigns/">
-        <button>All Campaigns</button>
-      </Link>
+      <div className="list-div-bottom-buttons">
+        <Link to="mycampaigns/create">
+          <button>Create</button>
+        </Link>
+        <Link to="campaigns/">
+          <button>All Campaigns</button>
+        </Link>
+      </div>
     </div>
   );
 }

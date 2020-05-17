@@ -36,3 +36,14 @@ main {
   border-radius: 3px;
   color: #fdedcf;
 }
+
+.list-div-bottom-buttons button {
+  height: 30px;
+  width: 85px;
+  background-color: #833534;
+  border: 0;
+  margin: 0 5px;
+  padding: 5px;
+  border-radius: 3px;
+  color: #fdedcf;
+}
